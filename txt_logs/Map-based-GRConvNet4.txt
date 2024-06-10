@@ -1,0 +1,14 @@
+Training log for Map-based GRConvNet4
+
+Classification: 
+- v1 - Map-based GRConvNet4, DoubleLogLoss (FAILS)
+    - LR = 5e-4
+    - batch size = 16
+
+- v2 - Map-based GRConvNet4, DoubleLogLoss (FAILS)
+    - LR = 1e-6
+    - batch size = 16
+    - DoubleLogLoss was scaled by the inverse of training samples in each
+      class to account for class imbalance. Model still fails to train.
+    - Checkerboard artifacts in output maps, suggesting upsampling would be 
+      better than transposed convolution.

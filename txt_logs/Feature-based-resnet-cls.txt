@@ -1,0 +1,22 @@
+Initial attempts with a feature based resnet predictor for classification on the jacquard dataset.
+This was done since the map based predictor was not working despite several attempts, so I decided to
+go back to simple classification with a pretrained model to identify where the problem arises.
+
+Feature based => model outputs are numeric logits, not map-based
+
+- v1 - ResNet50 Jacquard CLS, No depth map, CrossEntropyLoss
+    - Success, model achieves ~75% accuracy in under 20 epochs
+    - Batch size 32
+    - Learning rate 1e-4
+
+- v2 - ResNet50 Jacquard CLS, With depth map, CrossEntropyLoss
+    - Success, model achieves ~72% accuracy in under 20 epochs
+    - Batch size 32
+    - Learning rate 1e-4
+
+- v3 - ResNet50 Jacquard CLS, With depth map, DoubleLogLoss         <--- first failure (occurs with introduction of DoubleLogLoss)
+    - Model fails to learn
+    - Average loss consistently reduces
+    - accuracy stuck at 0.396396
+    - Batch size 32
+    - Learning rate 1e-4
